@@ -1,10 +1,6 @@
 # Monocular Depth Prediction
 
-This repository contains a unofficial PyTorch implementation of a monocular depth prediction model described in 
-["Deeper Depth Prediction with Fully Convolutional Residual Networks"](https://arxiv.org/abs/1606.00373) by [Iro Laina](http://campar.in.tum.de/Main/IroLaina) and others. 
-For the official models, see the
-[FCRN-DepthPrediction](https://github.com/iro-cp/FCRN-DepthPrediction) repository.
-This implementation supports data pre-processing, training from scratch, and evaluation. The code currently only supports the NYU Depth v2 dataset, but it should be easy to add other datasets.
+This is largely based on https://github.com/simonmeister/pytorch-mono-depth, with some custom tweaks for personal practice.
 
 Note that there is some code to support uncertainty (variance) prediction, however there are some dependencies missing from this repo and i didn't have time to document this. You don't need to worry about this code and can always leave the `--dist` argument set to `''` to use the code for standard depth prediction.
 
