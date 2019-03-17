@@ -78,19 +78,19 @@ class Trainer():
             self.optimizer.zero_grad()
             loss.backward()
             self.optimizer.step()
-            epoch_loss += loss.data[0]
+            epoch_loss += loss.item()
 
             if i % self.display_interval == 0 or i == 0:
                 print("===> Epoch[{}]({}/{}): Loss: {:.4f}"
                       .format(log_epoch,
                               i + starting_epoch,
                               len(self.training_loader),
-                              loss.data[0]))
+                              loss.item()))
 
             if self.logger is not None and (i % self.logging_interval == 0 or i == 0):
                 criterion_name = self.training_criterion.__class__.__name__
                 self.logger.log_training_loss(log_epoch * num_iterations + i,
-                                              loss.data[0],
+                                              loss.item(),
                                               self.lr)
 
         print("===> Epoch {} Complete: Avg. Loss: {:.4f}"

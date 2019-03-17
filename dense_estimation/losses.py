@@ -7,7 +7,7 @@ from math import log
 def _mask_input(input, mask=None):
     if mask is not None:
         input = input * mask
-        count = torch.sum(mask).data[0]
+        count = torch.sum(mask).item()
     else:
         count = np.prod(input.size(), dtype=np.float32).item()
     return input, count
@@ -17,7 +17,7 @@ class BerHuLoss(nn.Module):
     def forward(self, input, target, mask=None):
         x = input - target
         abs_x = torch.abs(x)
-        c = torch.max(abs_x).data[0] / 5
+        c = torch.max(abs_x).item() / 5
         leq = (abs_x <= c).float()
         l2_losses = (x ** 2 + c ** 2) / (2 * c)
         losses = leq * abs_x + (1 - leq) * l2_losses
@@ -33,7 +33,7 @@ class HuberLoss(nn.Module):
     def forward(self, input, target, mask=None):
         if mask is not None:
             loss = self.loss(input * mask, target * mask)
-            count = torch.sum(mask).data[0]
+            count = torch.sum(mask).item()
             return loss / count
 
         count = np.prod(input.size(), dtype=np.float32).item()
