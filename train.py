@@ -20,7 +20,7 @@ from dense_estimation.app.experiment import get_experiment
 
 
 parser = argparse.ArgumentParser(description='Monocular Depth Prediction + Uncertainty')
-parser.add_argument('--batch', type=int, default=16, help='training batch size')
+parser.add_argument('--batch', type=int, default=8, help='training batch size')
 parser.add_argument('--epochs', type=int, default=100, help='number of epochs to train for')
 parser.add_argument('--lr', type=float, default=0.01, help='learning rate')
 parser.add_argument('--cuda',default=True, action='store_true', help='use cuda')
